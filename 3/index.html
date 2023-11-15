@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<meta name="adriverDefaults" content="sid:45736,bt:52">
+	<meta name="adriverOptions" content="autoLoad:1">
+</head>
+<body>
+
+	<div class="ads">
+        <p>Блокировщик не обнаружен.</p>
+    </div>
+    <div class="alt" style="display:none;">
+        <p style="color:red;">Блокировщик обнаружен.</p>
+    </div>
+
+<script type="text/javascript" src="js/index.js"></script>
+<link rel="stylesheet" href="css/style.css">
+<script type="text/javascript">
+
+	const showMessage = () => {
+		document.getElementsByClassName("alt")[0].style.display = "block";
+		document.getElementsByClassName("ads")[0].style.display = "none";
+	}
+	const subscribe = () => {
+		arCAB.subscribe('found:adBlock', function () {
+			showMessage();
+			console.info('found:adBlock', arguments);
+		});
+		arCAB.subscribe('found:requestBlock', function () {
+			showMessage();
+			console.info('found:requestBlock', arguments);
+		});
+		arCAB.subscribe('found', function () {
+			showMessage();
+			console.info('found', arguments);
+		});
+		arCAB.subscribe('notFound:adBlock', function () {
+			console.info('notFound:adBlock', arguments);
+		});
+		arCAB.subscribe('notFound:requestBlock', function () {
+			console.info('notFound:requestBlock', arguments);
+		});
+		arCAB.subscribe('notFound', function () {
+			console.info('notFound', arguments);
+		});
+	}
+
+	if ( !window.arCAB )
+		showMessage();
+	else
+		subscribe();
+
+</script>
+
+<div id="adriver_banner_677067132" class="adriverBanner" style="width: 100px; background-color: aquamarine; height: 100px;"></div>
+
+</body>
+</html>

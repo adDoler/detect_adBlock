@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="font-family: Sans-Serif;">
+
+    <div id="ads">
+        <p>Блокировщик не обнаружен</p>
+    </div>
+    <div id="alt" style="display:none;">
+        <p style="color:red;">Блокировщик обнаружен</p>
+    </div>
+
+    <script src="./fuckadblock.js"></script>
+
+    <script>
+
+        function adBlockNotDetected() {
+            console.log('AdBlock is not enabled');
+        }
+        function adBlockDetected() {
+            document.getElementById("ads").style.display = "none";
+            document.getElementById("alt").style.display = "block";
+        }
+
+        const fuckAdBlock = new window.FuckAdBlock;
+
+        fuckAdBlock.onDetected(adBlockDetected);
+        fuckAdBlock.onNotDetected(adBlockNotDetected);
+        
+    </script>
+</body>
+</html>

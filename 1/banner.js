@@ -1,0 +1,1 @@
+window.adBannerTracker = true;

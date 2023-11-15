@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+</head>
+<body>
+    
+    <div id="ads">
+        <p>Блокировщик не обнаружен.</p>
+    </div>
+    <div id="alt" style="display:none;">
+        <p style="color:red;">Блокировщик обнаружен.</p>
+    </div>
+
+    <script src="banner.js"></script>
+    <script>
+
+        if (window.adBannerTracker === true)
+            console.log("Блокировщик рекламы, неактивен.");
+        else {
+            document.getElementById("ads").style.display = "none";
+            document.getElementById("alt").style.display = "block";
+        }
+
+    </script>
+</body>
+</html>

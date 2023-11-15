@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="ads">
+        <p>Блокировщик не обнаружен</p>
+    </div>
+    <div id="alt" style="display:none;">
+        <p style="color:red;">Блокировщик обнаружен</p>
+    </div>
+
+    <div id="reklama" class="topbanner ad-label ad banner"></div>
+    
+    <script>
+
+        function showMessage() {
+            document.getElementById("ads").style.display = "none";
+            document.getElementById("alt").style.display = "block";
+        }
+
+        function loadImage(src) {
+            var image = new Image();
+            image.addEventListener("error", showMessage);
+            image.src = src;
+            
+            document.body.append(image);
+            
+        }
+        
+        const el = document.getElementById("reklama");
+        var elStyle = getComputedStyle(el, null);
+
+        loadImage("https://ad-banner.onrender.com/?ev.adriver.ru");
+
+    </script>
+</body>
+</html>

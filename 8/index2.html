@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2</title>
+</head>
+<br>
+
+    <div id="ads">
+        <p>Блокировщик не обнаружен.</p>
+    </div>
+    <div id="alt" style="display:none;">
+        <p style="color:red;">Блокировщик обнаружен.</p>
+    </div>
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var testElement = document.createElement('div');
+            testElement.id = 'ad-test-element';
+            testElement.style.width = '10px';
+            testElement.style.height = '10px';
+            testElement.style.background = "red";
+
+            document.body.appendChild(testElement);
+
+            setTimeout(() => {
+                if (isElementVisible(testElement)) {
+                    console.log('Блокировщик рекламы, возможно, отключен.');
+                } else {
+                    document.getElementById("ads").style.display = "none";
+                    document.getElementById("alt").style.display = "block"; 
+                }
+            }, 100);
+
+        });
+
+        function isElementVisible(element) {
+            var style = window.getComputedStyle(element);
+            
+            return style.width !== '0' && style.height !== '0';
+        }
+    </script>
+</body>
+</html>
